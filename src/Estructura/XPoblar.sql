@@ -1,0 +1,10 @@
+DELETE FROM Reclamaciones;
+DELETE FROM Coberturas;
+DELETE FROM Beneficiarios;
+DELETE FROM Pagos;
+DELETE FROM Polizas;
+DELETE FROM Clientes;
+DELETE FROM Asesores;
+DELETE FROM Sucursales;
+DELETE FROM Agencias;
+COMMIT;
