@@ -1,7 +1,8 @@
 CREATE TABLE Agencias (
     idAgencia NUMBER(10) NOT NULL,
     nombre VARCHAR2(100) NOT NULL,
-    direccion VARCHAR2(200)
+    direccion VARCHAR2(200),
+    idAseguradora NUMBER(10) NOT NULL
 );
 
 CREATE TABLE Sucursales (
@@ -39,7 +40,8 @@ CREATE TABLE Polizas (
     fechaFin DATE NOT NULL,
     prima NUMBER(10,2) NOT NULL,
     estado VARCHAR2(10) NOT NULL,
-    renovable CHAR(1)
+    renovable CHAR(1),
+    idSeguro NUMBER(10) NOT NULL
 );
 
 CREATE TABLE Pagos (
@@ -73,4 +75,20 @@ CREATE TABLE Reclamaciones (
     monto NUMBER(10,2) NOT NULL,
     estado VARCHAR2(20) NOT NULL,
     descripcion VARCHAR2(500)
+);
+
+CREATE TABLE Aseguradoras (
+    idAseguradora NUMBER(10) NOT NULL,
+    nombre VARCHAR2(100) NOT NULL,
+    telefono NUMBER(15),
+    nit NUMBER(15) NOT NULL,
+    direccion VARCHAR2(200)
+);
+
+CREATE TABLE Seguros (
+    idSeguro NUMBER(10) NOT NULL,
+    nombre VARCHAR2(100) NOT NULL,
+    tipo VARCHAR2(50) NOT NULL,
+    descripcion VARCHAR2(500),
+    idAseguradora NUMBER(10) NOT NULL
 );

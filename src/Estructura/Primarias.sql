@@ -7,3 +7,6 @@ ALTER TABLE Pagos ADD CONSTRAINT PK_Pagos PRIMARY KEY (idPago);
 ALTER TABLE Beneficiarios ADD CONSTRAINT PK_Beneficiarios PRIMARY KEY (idBeneficiario);
 ALTER TABLE Coberturas ADD CONSTRAINT PK_Coberturas PRIMARY KEY (idCobertura);
 ALTER TABLE Reclamaciones ADD CONSTRAINT PK_Reclamaciones PRIMARY KEY (idReclamacion);
+
+ALTER TABLE Aseguradoras ADD CONSTRAINT PK_Aseguradoras PRIMARY KEY (idAseguradora);
+ALTER TABLE Seguros ADD CONSTRAINT PK_Seguros PRIMARY KEY (idSeguro);

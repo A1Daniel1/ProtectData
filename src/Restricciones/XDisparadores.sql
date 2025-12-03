@@ -1,2 +1,5 @@
-DROP TRIGGER trg_activar_poliza;
-DROP TRIGGER trg_validar_fechas_poliza;
+/* Eliminacion de Disparadores */
+
+DROP TRIGGER TRG_ValidarVigenciaPoliza;
+DROP TRIGGER TRG_ValidarReclamoActivo;
+DROP TRIGGER trg_reclamaciones_cobertura_acumulada;

@@ -18,3 +18,21 @@ ADD CONSTRAINT FK_Polizas_Clientes
 FOREIGN KEY (idCliente)
 REFERENCES Clientes(idCliente)
 ON DELETE SET NULL;
+
+-- Reclamaciones -> Polizas (ON DELETE CASCADE)
+ALTER TABLE Reclamaciones DROP CONSTRAINT FK_Reclamaciones_Polizas;
+
+ALTER TABLE Reclamaciones
+ADD CONSTRAINT FK_Reclamaciones_Polizas
+FOREIGN KEY (idPoliza)
+REFERENCES Polizas(idPoliza)
+ON DELETE CASCADE;
+
+-- Pagos -> Polizas (ON DELETE CASCADE)
+ALTER TABLE Pagos DROP CONSTRAINT FK_Pagos_Polizas;
+
+ALTER TABLE Pagos
+ADD CONSTRAINT FK_Pagos_Polizas
+FOREIGN KEY (idPoliza)
+REFERENCES Polizas(idPoliza)
+ON DELETE CASCADE;
