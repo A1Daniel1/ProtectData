@@ -48,7 +48,7 @@ El sistema está basado en un modelo relacional con las siguientes entidades pri
 
 ## 🛠️ Tecnologías
 
-- **Base de Datos**: MySQL / PostgreSQL
+- **Base de Datos**: Oracle SQL Developer
 - **Modelado**: Astah UML
 - **Consultas**: SQL
 - **Documentación**: DOCS
