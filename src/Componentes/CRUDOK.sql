@@ -41,18 +41,3 @@ END;
 /
 SELECT * FROM Polizas WHERE idPoliza = 2001;
 
--- Registrar un reclamo valido
-BEGIN
-    PC_Reclamos.RegistrarReclamo(3001, 2001, SYSDATE, 500000, 'Pendiente', 'Choque leve');
-    DBMS_OUTPUT.PUT_LINE('Reclamo 3001 registrado exitosamente.');
-END;
-/
-SELECT * FROM Reclamaciones WHERE idReclamacion = 3001;
-
--- Registrar un pago valido
-BEGIN
-    PC_Pagos.RegistrarPago(4001, 1001, 2001, SYSDATE, 1500000, 'Tarjeta');
-    DBMS_OUTPUT.PUT_LINE('Pago 4001 registrado exitosamente.');
-END;
-/
-SELECT * FROM Pagos WHERE idPago = 4001;

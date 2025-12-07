@@ -3,9 +3,12 @@ DELETE FROM Coberturas;
 DELETE FROM Beneficiarios;
 DELETE FROM Pagos;
 DELETE FROM Polizas;
+DELETE FROM Seguros;
 DELETE FROM Clientes;
 DELETE FROM Asesores;
 DELETE FROM Sucursales;
 DELETE FROM Agencias;
 DELETE FROM Aseguradoras;
 COMMIT;
+
+

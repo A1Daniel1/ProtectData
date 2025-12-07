@@ -21,6 +21,10 @@ BEGIN
     INSERT INTO Polizas (idPoliza, numeroPoliza, idCliente, fechaInic, fechaFin, prima, estado, renovable, idSeguro)
     VALUES (7001, 999888777, v_cliente_id, SYSDATE, SYSDATE + 365, 2000000, 'Activa', 'S', 999);
     
+    -- 1.5 Crear Cobertura (NECESARIO PARA EL TRIGGER trg_reclamaciones_cobertura_acumulada)
+    INSERT INTO Coberturas (idCobertura, idPoliza, descripcionC, montoMax)
+    VALUES (7001, 7001, 'Cobertura Test Cascada', 10000000);
+    
     -- 2. Crear Reclamo asociado
     INSERT INTO Reclamaciones (idReclamacion, idPoliza, fecha, monto, estado, descripcion)
     VALUES (8001, 7001, SYSDATE + 30, 500000, 'Pendiente', 'Test Cascada');
