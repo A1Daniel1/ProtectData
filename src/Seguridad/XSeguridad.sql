@@ -18,6 +18,7 @@ DROP ROLE RL_ASEGURADORA;
 DROP PACKAGE PKG_Asesor;
 DROP PACKAGE PKG_Cliente;
 DROP PACKAGE PKG_Admin;
+DROP PACKAGE PKG_Aseguradora;
 
 
 /*==========================================

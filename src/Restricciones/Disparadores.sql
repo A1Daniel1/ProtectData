@@ -1,27 +1,5 @@
 /* Disparadores con Logica de Negocio */
 
--- Trigger 1: Validar que la fecha de fin de poliza sea mayor a la de inicio
-CREATE OR REPLACE TRIGGER TRG_ValidarVigenciaPoliza
-BEFORE INSERT OR UPDATE ON Polizas
-FOR EACH ROW
-BEGIN
-    -- Validar que la fecha de inicio no sea anterior a ayer (permitir margen de error de 1 dia)
-    IF :NEW.fechaInic < TRUNC(SYSDATE) - 1 THEN
-        RAISE_APPLICATION_ERROR(-20011, 'La fecha de inicio de la poliza no puede ser anterior a la fecha actual.');
-    END IF;
-
-    -- Validar que la duracion de la poliza sea entre 6 meses (aprox 180 dias) y 5 años (aprox 1825 dias)
-    IF (:NEW.fechaFin - :NEW.fechaInic) < 180 OR (:NEW.fechaFin - :NEW.fechaInic) > 1825 THEN
-        RAISE_APPLICATION_ERROR(-20015, 'La vigencia de la poliza debe ser entre 6 meses y 5 años.');
-    END IF;
-    
-    -- Validar consistencia basica (Fin > Inicio) - redundante con lo anterior pero buena practica
-    IF :NEW.fechaFin <= :NEW.fechaInic THEN
-        RAISE_APPLICATION_ERROR(-20016, 'La fecha de fin debe ser posterior a la de inicio.');
-    END IF;
-END;
-/
-
 -- Trigger 2: Validar que solo se puedan registrar reclamos a polizas Activas
 -- y que la fecha del reclamo este dentro de la vigencia de la poliza
 CREATE OR REPLACE TRIGGER TRG_ValidarReclamoActivo

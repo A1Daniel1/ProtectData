@@ -1,5 +1,10 @@
 /* Pruebas Exitosas de Disparadores */
 
+--- TRG_ValidarReclamoActivo
+--- trg_reclamaciones_cobertura_acumulada
+--- trg_coberturas_vs_prima
+
+
 -- 0. PREPARACIÓN: Insertar Seguro de prueba (ID 999) para evitar el ORA-01400 en Polizas.
 DECLARE
 BEGIN
@@ -9,18 +14,6 @@ BEGIN
 EXCEPTION
     WHEN DUP_VAL_ON_INDEX THEN
         NULL;
-END;
-/
-
--- 1. Insertar Poliza con fechas validas
-BEGIN
-    -- CORRECCIÓN: Se añade idSeguro (99999) y se usa idCliente existente (1).
-    INSERT INTO Polizas (idPoliza, numeroPoliza, idCliente, fechaInic, fechaFin, prima, estado, renovable, idSeguro)
-    VALUES (93001, 111222333, 1, SYSDATE, SYSDATE + 365, 800000, 'Activa', 'S', 99999);
-    DBMS_OUTPUT.PUT_LINE('Poliza 93001 insertada correctamente (Fechas validas).');
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('FALLO INESPERADO: ' || SQLERRM);
 END;
 /
 
@@ -38,7 +31,6 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE('FALLO INESPERADO: ' || SQLERRM);
 END;
 /
-
 
 -- Coberturas de la póliza 93001 (TOTAL: 10,000)
 INSERT INTO Coberturas (idCobertura, idPoliza, descripcionC, montoMax)

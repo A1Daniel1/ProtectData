@@ -1,17 +1,10 @@
-/* Pruebas Exitosas de Tuplas (TuplasOK) */
+--- CK_Polizas_Fechas
 
--- Insertar Cliente con correo valido
-BEGIN
-    INSERT INTO Clientes (idCliente, idAgencia, idAsesor, nombre, correo, telefono, direccion)
-    VALUES (5001, 1, 1, 'Test Correo OK', 'test.correo@dominio.com', 3009998877, 'Dir Test');
-    DBMS_OUTPUT.PUT_LINE('Cliente 5001 insertado correctamente (Correo valido).');
-END;
-/
+INSERT INTO Polizas (idPoliza, numeroPoliza, idCliente, fechaInic, fechaFin, prima, estado, renovable, idSeguro) VALUES (2013, 10203, 58, TO_DATE('2025-12-10', 'YYYY-MM-DD'), TO_DATE('2030-03-29', 'YYYY-MM-DD'), 4749235.29, 'Cancelada', 'N', 2);
 
--- Insertar Poliza con Estado y Renovable validos
-BEGIN
-    INSERT INTO Polizas (idPoliza, numeroPoliza, idCliente, fechaInic, fechaFin, prima, estado, renovable)
-    VALUES (6001, 123123123, 5001, SYSDATE, SYSDATE + 365, 1000000, 'Activa', 'S');
-    DBMS_OUTPUT.PUT_LINE('Poliza 6001 insertada correctamente (Estado y Renovable validos).');
-END;
-/
+
+--- CK_Pagos_Metodo_Monto
+
+INSERT INTO Pagos (idPago, idCliente, idPoliza, fechaPago, monto, metodoPago) VALUES (204, 7, 181, TO_DATE('2026-01-01', 'YYYY-MM-DD'), 22221.96, 'EFECTIVO');
+
+

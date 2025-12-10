@@ -1,41 +1,11 @@
-/* Pruebas Fallidas de Tuplas (TuplasNoOK) */
+--- CK_Polizas_Fechas
 
--- 1. Correo invalido (sin @)
-BEGIN
-    INSERT INTO Clientes (idCliente, idAgencia, idAsesor, nombre, correo, telefono, direccion)
-    VALUES (5002, 1, 1, 'Test Correo Fail', 'testcorreodominio.com', 3009998877, 'Dir Test');
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error esperado (Correo sin @): ' || SQLERRM);
-END;
-/
+INSERT INTO Polizas (idPoliza, numeroPoliza, idCliente, fechaInic, fechaFin, prima, estado, renovable, idSeguro) VALUES (2013, 10203, 58,  TO_DATE('2030-03-29', 'YYYY-MM-DD'), TO_DATE('2025-12-10', 'YYYY-MM-DD'), 4749235.29, 'Cancelada', 'N', 2);
 
--- 2. Estado invalido
-BEGIN
-    INSERT INTO Polizas (idPoliza, numeroPoliza, idCliente, fechaInic, fechaFin, prima, estado, renovable)
-    VALUES (6002, 456456456, 5001, SYSDATE, SYSDATE + 365, 1000000, 'Invalido', 'S');
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error esperado (Estado invalido): ' || SQLERRM);
-END;
-/
 
--- 3. Renovable invalido
-BEGIN
-    INSERT INTO Polizas (idPoliza, numeroPoliza, idCliente, fechaInic, fechaFin, prima, estado, renovable)
-    VALUES (6003, 789789789, 5001, SYSDATE, SYSDATE + 365, 1000000, 'Activa', 'X');
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error esperado (Renovable invalido): ' || SQLERRM);
-END;
-/
+--- CK_Pagos_Metodo_Monto
 
--- 4. Prima negativa (Constraint anterior)
-BEGIN
-    INSERT INTO Polizas (idPoliza, numeroPoliza, idCliente, fechaInic, fechaFin, prima, estado, renovable)
-    VALUES (6004, 111111111, 5001, SYSDATE, SYSDATE + 365, -100, 'Activa', 'S');
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('Error esperado (Prima negativa): ' || SQLERRM);
-END;
-/
+INSERT INTO Pagos (idPago, idCliente, idPoliza, fechaPago, monto, metodoPago) VALUES (205, 7, 181, TO_DATE('2026-01-01', 'YYYY-MM-DD'), 5000000.96, 'EFECTIVO');
+
+
+     
